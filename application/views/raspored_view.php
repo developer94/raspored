@@ -13,33 +13,6 @@
 			background: cornflowerBlue;
 		}
 		
-		#raspored
-		{
-			border: 1px none white;
-			border-spacing: 0 0.2em;
-		}
-		
-		#raspored th
-		{
-			font-weight: 100;
-			font-family: 'Segoe UI';
-			font-size: 24pt;
-		}
-		
-		#raspored tr
-		{
-			padding: 1px;
-		}
-		
-		#raspored td
-		{
-			border: 1px none white;
-			padding: 0;
-			padding-left: 0.5em;
-			padding-right: 0.5em;
-			height: 2em;
-		}
-		
 		#wrapper
 		{
 			display: inline-block;
@@ -84,6 +57,67 @@
 			margin-top: 30px;
 		}
 	</style>
+</head>
+<body>
+	<center><div id="wrapper">
+		<table id="raspored" cellpadding="0px">
+			<thead>
+				<tr>
+					<th colspan="3"><h1><?php echo $dan. " " .$smena; ?></h1></th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php $current = 0; ?>																				<!-- adds a class counter -->
+				<?php foreach($raspored->result() as $predmet): ?>
+					<tr>
+						<td class="orange-highlight" valign="middle"><b><?php echo $predmet->cas; ?></b></td>
+						<td class="cfblue-highlight" id="cas-<?= $current; ?>"> 									<!-- adds class number as the ID -->
+							<span><?php echo $predmet->predmet; ?></span>
+							<?php if(!is_null($predmet->ucionica)): ?>
+							<span class="classroom">uc. <?php echo $predmet->ucionica; ?></span>
+							<?php endif; ?>
+						</td>
+						<td><?php echo $predmet->vreme; ?></td>
+					</tr>
+					<script type="text/javascript">
+						vremena[current] = "<?= $predmet->vreme; ?>";
+						casovi[current] = <?= $predmet->cas; ?>;
+						current++;
+					</script>
+					<?php $current++; ?>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+	</div>
+	<div id="choices">
+	<form action="javascript:void%200">
+		Dan: 
+		<select id="selDan">
+			<option value="Ponedeljak">Ponedeljak</option>
+			<option value="Utorak">Utorak</option>
+			<option value="Sreda">Sreda</option>
+			<option value="Cetvrtak">Cetvrtak</option>
+			<option value="Petak">Petak</option>
+		</select>
+		Smena: 
+		<select id="selSmena">
+			<option value="Prepodne">Prepodne</option>
+			<option value="Poslepodne">Poslepodne</option>
+		</select>		
+		Grupa:
+		<select id="selGrupa">
+			<option value="1">Prva</option>
+			<option value="2">Druga</option>
+		</select>
+	</form></br>
+	<a id="izmeniLink" href="#">izmeni raspored</a>
+	</div>
+	<h2 id="time"><span id="time-till-end"></span><span id="time-till-end-message"></span></h2>
+		<a title="Real Time Analytics" href="http://getclicky.com/100550047"><img alt="Real Time Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
+		<script src="//static.getclicky.com/js" type="text/javascript"></script>
+		<script type="text/javascript">try{ clicky.init(100550047); }catch(e){}</script>
+		<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100550047ns.gif" /></p></noscript>
+	</center>
 	<script type="text/javascript">
 		var vremena = [];
 		var minuti = [];
@@ -287,66 +321,5 @@
 			}
 		});
 	</script>
-</head>
-<body>
-	<center><div id="wrapper">
-		<table id="raspored" cellpadding="0px">
-			<thead>
-				<tr>
-					<th colspan="3"><h1><?php echo $dan. " " .$smena; ?></h1></th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php $current = 0; ?>																				<!-- adds a class counter -->
-				<?php foreach($raspored->result() as $predmet): ?>
-					<tr>
-						<td class="orange-highlight" valign="middle"><b><?php echo $predmet->cas; ?></b></td>
-						<td class="cfblue-highlight" id="cas-<?= $current; ?>"> 									<!-- adds class number as the ID -->
-							<span><?php echo $predmet->predmet; ?></span>
-							<?php if(!is_null($predmet->ucionica)): ?>
-							<span class="classroom">uc. <?php echo $predmet->ucionica; ?></span>
-							<?php endif; ?>
-						</td>
-						<td><?php echo $predmet->vreme; ?></td>
-					</tr>
-					<script type="text/javascript">
-						vremena[current] = "<?= $predmet->vreme; ?>";
-						casovi[current] = <?= $predmet->cas; ?>;
-						current++;
-					</script>
-					<?php $current++; ?>
-				<?php endforeach; ?>
-			</tbody>
-		</table>
-	</div>
-	<div id="choices">
-	<form action="javascript:void%200">
-		Dan: 
-		<select id="selDan">
-			<option value="Ponedeljak">Ponedeljak</option>
-			<option value="Utorak">Utorak</option>
-			<option value="Sreda">Sreda</option>
-			<option value="Cetvrtak">Cetvrtak</option>
-			<option value="Petak">Petak</option>
-		</select>
-		Smena: 
-		<select id="selSmena">
-			<option value="Prepodne">Prepodne</option>
-			<option value="Poslepodne">Poslepodne</option>
-		</select>		
-		Grupa:
-		<select id="selGrupa">
-			<option value="1">Prva</option>
-			<option value="2">Druga</option>
-		</select>
-	</form></br>
-	<a id="izmeniLink" href="#">izmeni raspored</a>
-	</div>
-	<h2 id="time"><span id="time-till-end"></span><span id="time-till-end-message"></span></h2>
-		<a title="Real Time Analytics" href="http://getclicky.com/100550047"><img alt="Real Time Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
-		<script src="//static.getclicky.com/js" type="text/javascript"></script>
-		<script type="text/javascript">try{ clicky.init(100550047); }catch(e){}</script>
-		<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100550047ns.gif" /></p></noscript>
-	</center>
 </body>
 </html>
