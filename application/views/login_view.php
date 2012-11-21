@@ -4,26 +4,8 @@
 <link rel="icon" type="image/png" href="/assets/images/cal.png" />
 <link rel="stylesheet" type="text/css" href="<?= $this->config->item('css_path'); ?>/default.css" />
 <link rel="stylesheet" type="text/css" href="<?= $this->config->item('css_path'); ?>/admin.css" />
-<script type="text/javascript" src="/assets/js/jquery-1.8.2.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function ()
-	{
-		$("#login").click(function ()
-		{
-			var _data = {};
-			
-			_data['user'] = $("#user").val();
-			_data['pass'] = $("#pass").val();
-			
-			$.post('/index.php/login/check_user', _data, function(data, textStatus, jqXHR)
-			{
-				$("#message").show();
-				$("#message").html(data);
-				setTimeout(function(){$("#message").fadeOut('slow');}, 3000);
-			});
-		});
-	});
-</script>
+<script type="text/javascript" src="<?= $this->config->item('js_path');?>/lib/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="<?= $this->config->item('js_path');?>/views/login.js"></script>
 <style type="text/css">
 	h1
 	{

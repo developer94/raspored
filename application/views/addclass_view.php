@@ -3,8 +3,8 @@
 	<title>
 	Raspored
 	</title>
-	<link rel="icon" type="image/png" href="/assets/images/cal.png" />
-	<script type="text/javascript" src="/assets/js/jquery-1.8.2.min.js"></script>
+	<link rel="icon" type="image/png" href="<?= $this->config->item('img_path'); ?>/cal.png" />
+	<script type="text/javascript" src="<?= $this->config->item('js_path'); ?>/lib/jquery-1.8.2.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function ()
 		{

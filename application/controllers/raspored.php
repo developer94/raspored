@@ -1,17 +1,12 @@
 <?php 
 class Raspored extends CI_Controller
 {
-	public function index($grupa = NULL, $odeljenje = NULL, $dan = NULL, $smena = NULL)
+	public function index($grupa = 1, $odeljenje = 409, $dan = NULL, $smena = NULL)
 	{
 		$data = array();
 		
 		$this->load->database();
 		$this->load->model("raspored_model");
-		
-		if($odeljenje == NULL)
-			$data['odeljenje'] = 409;
-		else
-			$data['odeljenje'] = $odeljenje;
 		
 		if($dan == NULL)
 			$data['dan'] = get_dan();
@@ -22,11 +17,9 @@ class Raspored extends CI_Controller
 			$data['smena'] = get_smena();
 		else
 			$data['smena'] = $smena;
-			
-		if($grupa == NULL)
-			$data['grupa'] = 1;
-		else
-			$data['grupa'] = $grupa;
+
+		$data['odeljenje'] = $odeljenje;
+		$data['grupa'] = $grupa;
 			
 		//$data['smena'] = "Poslepodne";
 			
