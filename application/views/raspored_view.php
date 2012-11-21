@@ -131,7 +131,7 @@
 			<option value="1">Prva</option>
 			<option value="2">Druga</option>
 		</select>
-		<input type="checkbox" id="skraceni">Skraceni</input>
+		<input type="checkbox" id="skraceni">Skraceni casovi</input>
 	</form></br>
 	<a id="izmeniLink" href="#">izmeni raspored</a>
 	</div>
