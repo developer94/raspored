@@ -28,6 +28,7 @@
 		var dan = "<?= $dan?>";
 		var smena = "<?= $smena?>";
 		var grupa = "<?= $grupa?>";
+		var skraceni = "<?= $skraceni?>";
 	</script>
 	<style type="text/css">
 		body 
@@ -131,11 +132,12 @@
 			<option value="1">Prva</option>
 			<option value="2">Druga</option>
 		</select>
+		<input type="checkbox" id="skraceni">Skraceni casovi</input>
 	</form></br>
 	<a id="izmeniLink" href="#">izmeni raspored</a>
 	</div>
 	<h2 id="time"><span id="time-till-end"></span><span id="time-till-end-message"></span></h2>
-		<a title="Real Time Analytics" href="http://getclicky.com/100550047"><img alt="Real Time Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
+		<a style="display: none;" title="Real Time Analytics" href="http://getclicky.com/100550047"><img alt="Real Time Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
 		<script src="//static.getclicky.com/js" type="text/javascript"></script>
 		<script type="text/javascript">try{ clicky.init(100550047); }catch(e){}</script>
 		<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100550047ns.gif" /></p></noscript>
