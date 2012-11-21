@@ -5,135 +5,10 @@
 	</title>
 	<link rel="icon" type="image/png" href="<?= $this->config->item('img_path'); ?>/cal.png" />
 	<link rel="stylesheet" type="text/css" href="<?= $this->config->item('css_path'); ?>/fonts.css" />
+	<link rel="stylesheet" type="text/css" href="<?= $this->config->item('css_path'); ?>/admin.css" />
+	<link rel="stylesheet" type="text/css" href="<?= $this->config->item('css_path'); ?>/raspored.css" />
 	<script type="text/javascript" src="<?= $this->config->item('js_path'); ?>/jquery-1.8.2.min.js"></script>
-	<script type="text/javascript">
-		var g_test;
-	
-		$(document).ready(function ()
-		{
-			var originalstate = [];
-			originalstate["cas"] = [];
-			originalstate["predmet"] = [];
-			originalstate["smena"] = [];
-			originalstate["mix"] = [];
-			originalstate["ucionica"] = [];
-			var toadd = [];
-			var toremove = [];
-			var toupdate = [];
-			
-			$("#selDan").val("<?= $dan?>");
-			$("#selSmena").val("<?= $smena?>");
-			$("#selGrupa").val("<?= $grupa?>");
-			
-			$("#selDan").change(update);
-			$("#selSmena").change(update);
-			$("#selGrupa").change(update);
-			
-			var dan = $("#selDan").val();
-			var smena = $("#selSmena").val();
-			var grupa = $("#selGrupa").val();
-			
-			$("#rasporedLink").attr("href", '/raspored/index/' + grupa + '/409/' + dan + '/' + smena);
-			
-			console.log(originalstate);
-			
-			function update()
-			{
-				var dan = $("#selDan").val();
-				var smena = $("#selSmena").val();
-				var grupa = $("#selGrupa").val();
-				
-				window.location.href = '/raspored/izmeni/'+ grupa + '/409/' + dan + '/' + smena;
-			}
-			
-			g_test = function()						//global test unload func
-			{
-				var toSend = {};
-				toSend["original_data"] = originalstate;
-				toSend["data"] = [];
-				toSend["data"]["cas"] = [];
-				toSend["data"]["predmet"] = [];
-				toSend["data"]["mix"] = [];
-				toSend["data"]["ucionica"] = [];
-				
-				$("[id^=cas-]").each(function ()
-				{
-					toSend["data"]["cas"].push($(this).val());
-				});
-				
-				$("[id^=predmet-]").each(function ()
-				{
-					toSend["data"]["predmet"].push($(this).val());
-				});
-				
-				$("[id^=mix-]").each(function ()
-				{
-					toSend["data"]["mix"].push($(this).val());
-				});
-				
-				$("[id^=ucionica-]").each(function ()
-				{
-					toSend["data"]["ucionica"].push($(this).val());
-				});
-				
-				console.log(toSend["data"]);
-			}
-			
-			/*g_test = function ()
-			{
-				var data = {};
-				data['array'] = [];							//wrapper associative array
-				data['array'].push( {"key1" : "value1", 	//enables us to call $_POST['array'] to retrieve an array of json data
-							"key2" : "value2",
-							"key3" : "value3"} );
-				console.log("works!");
-				$.ajax({type: "POST",
-						url: '/tests/json', 
-						data: data,
-						success: function(data)
-						{
-							console.log(data);
-						}
-				});
-			}*/
-			
-			//$(window).unload(test);
-		});
-	</script>
 	<style type="text/css">
-		body 
-		{
-			background: url(<?= $this->config->item('img_path') ?>/ios-linen.jpg);
-			font: 13px/20px normal;
-			font-family: 'Segoe UI', sans-serif;
-			color: #fff;
-		}
-		
-		#raspored
-		{
-			border: 1px none white;
-			border-spacing: 0 0.2em;
-		}
-		
-		#raspored tr
-		{
-			padding: 1px;
-		}
-		
-		#raspored td
-		{
-			border: 1px none white;
-			padding: 0;
-			padding-left: 0.5em;
-			padding-right: 0.5em;
-			height: 2em;
-		}
-		
-		#raspored td.mid
-		{
-			padding-left: 0;
-		}
-		
 		#wrapper
 		{
 			display: inline-block;
@@ -213,13 +88,13 @@
 		<table id="raspored" cellpadding="0px">
 			<thead>
 				<tr>
-					<th colspan="5"><h1><?php echo $dan. " " .$smena; ?></h1></th>
+					<th colspan="5"><h4><?php echo $dan. " " .$smena; ?></h4></th>
 				</tr>
 				<tr>
-					<th>Cas</th>
-					<th>Mix</th>
-					<th>Predmet</th>
-					<th>Uc.</th>
+					<th><h4>Cas</h4></th>
+					<th><h4>Mix</h4></th>
+					<th><h4>Predmet</h4></th>
+					<th><h4>Uc.</h4></th>
 					<th></th>
 			</thead>
 			<tbody>
@@ -267,5 +142,6 @@
 	</form></br>
 	<a id="rasporedLink" href="#">nazad na raspored</a>
 	</div></center>
+	<script type="text/javascript" src="<?= $this->config->item('js_path'); ?>/views/izmeni.js"></script>
 </body>
 </html>

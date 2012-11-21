@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>No Authorization</title>
-<link rel="icon" type="image/png" href="/assets/images/cal.png" />
+<link rel="icon" type="image/png" href="<?= $this->config->item('img_path'); ?>/images/cal.png" />
 <style type="text/css">
 	body
 	{

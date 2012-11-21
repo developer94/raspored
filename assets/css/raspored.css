@@ -31,3 +31,8 @@
 	padding-right: 0.5em;
 	height: 2em;
 }
+
+#raspored td.mid
+{
+	padding-left: 0;
+}

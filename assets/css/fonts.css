@@ -12,6 +12,15 @@ h1
 	font-weight: 100;
 }
 
+h4
+{
+	font-family: 'Segoe UI', Tahoma, sans-serif;
+	font-size: 14pt;
+	font-weight: 100;
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+}
+
 thead th h1
 {
 	margin-bottom: 0px;

@@ -22,6 +22,9 @@ class Raspored extends CI_Controller
 			$data['smena'] = get_smena();
 		else
 			$data['smena'] = $smena;
+
+		$data['odeljenje'] = $odeljenje;
+		$data['grupa'] = $grupa;
 			
 		if($grupa == NULL)
 			$data['grupa'] = 1;
