@@ -133,6 +133,7 @@
 		</select>
 	</form></br>
 	<a id="izmeniLink" href="#">izmeni raspored</a>
+	<a id="overview" href="/raspored/overview/1/409/Prepodne">Celokupni prikaz rasporeda</a>
 	</div>
 	<h2 id="time"><span id="time-till-end"></span><span id="time-till-end-message"></span></h2>
 		<a title="Real Time Analytics" href="http://getclicky.com/100550047"><img alt="Real Time Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>

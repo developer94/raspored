@@ -14,6 +14,12 @@ class raspored_model extends CI_Model
 		return $raspored;
 	}
 	
+	function get_overview($_smena, $_grupa, $_odeljenje)
+	{
+		$overview = $this->db->query("SELECT c.cas, c.mix, c.predmet, c.ucionica, time_format(z.vreme, \"%H:%i\") as vreme FROM casovi AS c INNER JOIN zvona AS z ON c.cas = z.cas AND c.mix = z.mix WHERE c.odeljenje = " . $_odeljenje . " AND c.smena = \"" . $_smena . "\" AND (c.Grupa = 0 or c.Grupa = " . $_grupa . ") ORDER BY vreme ASC");
+		return $overview;
+	}
+	
 	function add_class($odeljenje, $dan, $grupa, $smena, $mix, $cas, $predmet)
 	{
 		$this->db->query("INSERT INTO casovi (odeljenje, dan, grupa, smena, mix, cas, predmet) VALUES (".$odeljenje.", '".$dan."', ".$grupa.", '".$smena."', '".$mix."', ".$cas.", '".$predmet."')");
