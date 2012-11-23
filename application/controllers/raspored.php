@@ -1,7 +1,7 @@
 <?php 
 class Raspored extends CI_Controller
 {
-	public function index($grupa = 1, $odeljenje = 409, $dan = NULL, $smena = NULL)
+	public function index($grupa = 1, $odeljenje = 409, $dan = NULL, $smena = NULL, $skraceni = "")
 	{
 		$data = array();
 		
@@ -17,13 +17,17 @@ class Raspored extends CI_Controller
 			$data['smena'] = get_smena();
 		else
 			$data['smena'] = $smena;
+		if($skraceni == "Skraceno")
+			$data['skraceni'] = "_skraceno";	
+		else
+			$data['skraceni'] = "";
 
 		$data['odeljenje'] = $odeljenje;
 		$data['grupa'] = $grupa;
 			
 		//$data['smena'] = "Poslepodne";
 			
-		$data['raspored'] = $this->raspored_model->get_raspored($data['odeljenje'], $data['dan'], $data['smena'], $data['grupa']);
+		$data['raspored'] = $this->raspored_model->get_raspored($data['odeljenje'], $data['dan'], $data['smena'], $data['grupa'], $data['skraceni']);
 		$this->load->view('raspored_view', $data);
 	}
 	
@@ -88,6 +92,7 @@ class Raspored extends CI_Controller
 			$predmet 	= $this->input->post('predmet');
 			$odeljenje 	= $this->input->post('odeljenje');
 			$mix 		= $this->input->post('mix');
+			
 			
 			$this->load->model('raspored_model');
 			

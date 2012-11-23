@@ -28,6 +28,7 @@
 		var dan = "<?= $dan?>";
 		var smena = "<?= $smena?>";
 		var grupa = "<?= $grupa?>";
+		var skraceni = "<?= $skraceni?>";
 	</script>
 	<style type="text/css">
 		body 
