@@ -80,30 +80,33 @@
 	</style>
 </head>
 <body>
-	<center><div id="wrapper">
-		<table id="raspored" cellpadding="0px">
-				<?php $current = 0; ?>																				<!-- adds a class counter -->
-				<?php foreach($raspored->result() as $predmet): ?>
-					<tr>
-						<td class="orange-highlight" valign="middle"><b><?php echo $predmet->cas; ?></b></td>
-						<td class="cfblue-highlight" id="cas-<?= $current; ?>"> 									<!-- adds class number as the ID -->
-							<span><?php echo $predmet->predmet; ?></span>
-							<?php if(!is_null($predmet->ucionica)): ?>
-							<span class="classroom">uc. <?php echo $predmet->ucionica; ?></span>
-							<?php endif; ?>
-						</td>
-						<td><?php echo $predmet->vreme; ?></td>
-					</tr>
-					<script type="text/javascript">
-						vremena[current] = "<?= $predmet->vreme; ?>";
-						casovi[current] = <?= $predmet->cas; ?>;
-						current++;
-					</script>
-					<?php $current++; ?>
-				<?php endforeach; ?>
-			</tbody>
-		</table>
-	</div>
+	<center>
+		<?php $current = 0; ?>																				<!-- adds a class counter -->
+		<?php foreach($overview as $raspored): ?>
+			<div id="wrapper">
+				<table id="raspored" cellpadding="0px">
+		<?php foreach($raspored->result() as $predmet): ?>
+			<tr>
+				<td class="orange-highlight" valign="middle"><b><?php echo $predmet->cas; ?></b></td>
+				<td class="cfblue-highlight" id="cas-<?= $current; ?>"> 									<!-- adds class number as the ID -->
+					<span><?php echo $predmet->predmet; ?></span>
+					<?php if(!is_null($predmet->ucionica)): ?>
+						<span class="classroom">uc. <?php echo $predmet->ucionica; ?></span>
+						<?php endif; ?>
+					</td>
+					<td><?php echo $predmet->vreme; ?></td>
+				</tr>
+				<script type="text/javascript">
+					remena[current] = "<?= $predmet->vreme; ?>";
+					casovi[current] = <?= $predmet->cas; ?>;
+					current++;
+				</script>
+			<?php $current++; ?>
+		<?php endforeach; ?>
+				</table>
+			</div>
+		<?php endforeach; ?>
+	</tbody>
 	<div id="choices">
 	<form action="javascript:void%200">
 		Smena: 

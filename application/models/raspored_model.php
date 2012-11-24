@@ -16,8 +16,15 @@ class raspored_model extends CI_Model
 	
 	function get_overview($_smena, $_grupa, $_odeljenje)
 	{
-		$overview = $this->db->query("SELECT c.cas, c.mix, c.predmet, c.ucionica, time_format(z.vreme, \"%H:%i\") as vreme FROM casovi AS c INNER JOIN zvona AS z ON c.cas = z.cas AND c.mix = z.mix WHERE c.odeljenje = " . $_odeljenje . " AND c.smena = \"" . $_smena . "\" AND (c.Grupa = 0 or c.Grupa = " . $_grupa . ") ORDER BY vreme ASC");
-		return $overview;
+	
+		$data = array();
+		
+		$data['Ponedeljak'] = $this->db->query("SELECT c.cas, c.mix, c.predmet, c.ucionica, time_format(z.vreme, \"%H:%i\") as vreme FROM casovi AS c INNER JOIN zvona AS z ON c.cas = z.cas AND c.mix = z.mix WHERE c.odeljenje = " . $_odeljenje . " AND c.dan = \"Ponedeljak\" AND c.smena = \"" . $_smena . "\" AND (c.Grupa = 0 or c.Grupa = " . $_grupa . ") ORDER BY vreme ASC");
+		$data['Utorak'] = $this->db->query("SELECT c.cas, c.mix, c.predmet, c.ucionica, time_format(z.vreme, \"%H:%i\") as vreme FROM casovi AS c INNER JOIN zvona AS z ON c.cas = z.cas AND c.mix = z.mix WHERE c.odeljenje = " . $_odeljenje . " AND c.dan = \"Utorak\"  AND c.smena = \"" . $_smena . "\" AND (c.Grupa = 0 or c.Grupa = " . $_grupa . ") ORDER BY vreme ASC");
+		$data['Sreda'] = $this->db->query("SELECT c.cas, c.mix, c.predmet, c.ucionica, time_format(z.vreme, \"%H:%i\") as vreme FROM casovi AS c INNER JOIN zvona AS z ON c.cas = z.cas AND c.mix = z.mix WHERE c.odeljenje = " . $_odeljenje . " AND c.dan = \"Sreda\"  AND c.smena = \"" . $_smena . "\" AND (c.Grupa = 0 or c.Grupa = " . $_grupa . ") ORDER BY vreme ASC");
+		$data['Cetvrtak'] = $this->db->query("SELECT c.cas, c.mix, c.predmet, c.ucionica, time_format(z.vreme, \"%H:%i\") as vreme FROM casovi AS c INNER JOIN zvona AS z ON c.cas = z.cas AND c.mix = z.mix WHERE c.odeljenje = " . $_odeljenje . " AND c.dan = \"Cetvrtak\" AND c.smena = \"" . $_smena . "\" AND (c.Grupa = 0 or c.Grupa = " . $_grupa . ") ORDER BY vreme ASC");
+		$data['Petak'] = $this->db->query("SELECT c.cas, c.mix, c.predmet, c.ucionica, time_format(z.vreme, \"%H:%i\") as vreme FROM casovi AS c INNER JOIN zvona AS z ON c.cas = z.cas AND c.mix = z.mix WHERE c.odeljenje = " . $_odeljenje . " AND c.dan = \"Petak\"  AND c.smena = \"" . $_smena . "\" AND (c.Grupa = 0 or c.Grupa = " . $_grupa . ") ORDER BY vreme ASC");
+		return $data;
 	}
 	
 	function add_class($odeljenje, $dan, $grupa, $smena, $mix, $cas, $predmet)
