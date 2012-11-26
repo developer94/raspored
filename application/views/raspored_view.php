@@ -80,6 +80,12 @@
 		{
 			margin-top: 30px;
 		}
+
+		.predmet
+		{
+			position: relative;
+			z-index: 1;
+		}
 	</style>
 </head>
 <body>
@@ -95,8 +101,8 @@
 				<?php foreach($raspored->result() as $predmet): ?>
 					<tr>
 						<td class="orange-highlight" valign="middle"><b><?php echo $predmet->cas; ?></b></td>
-						<td class="cfblue-highlight" id="cas-<?= $current; ?>"> 									<!-- adds class number as the ID -->
-							<span><?php echo $predmet->predmet; ?></span>
+						<td class="cfblue-highlight" id="cas-<?= $current; ?>"> 		<!-- adds class number as the ID -->
+							<span class="bar"></span><span class="predmet"><?php echo $predmet->predmet; ?></span>
 							<?php if(!is_null($predmet->ucionica)): ?>
 							<span class="classroom">uc. <?php echo $predmet->ucionica; ?></span>
 							<?php endif; ?>

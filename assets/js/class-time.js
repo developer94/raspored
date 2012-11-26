@@ -40,18 +40,27 @@ $(document).ready(function ()
 
 	function unmark_class(class_index)
 	{
-		var this_class = $('#cas-'+class_index);				//Find current class row
-		this_class.removeClass('current_class');				//Remove existant class markings
-		this_class.addClass('cfblue-highlight');				//Add normal theme colors !!!!! CHECK IF CHANGING COLORS OF THE THEME!
+		var this_class = $('#cas-'+class_index+' .bar');		//Find current class row
+		var class_text = $('#cas-'+class_index+' .predmet');
+		class_text.css('font-weight', 'normal').css('color', 'white');
+		this_class.removeClass('time-marker');					//Remove existant class markings
 	}
 
 	function mark_class(class_index)
 	{
 		unmark_class(currently_marked);
-		var this_class = $('#cas-'+class_index);				//Find current class row
-		this_class.addClass('current_class');					//Remove existant class markings
-		this_class.removeClass('cfblue-highlight');				//Add normal theme colors !!!!! CHECK IF CHANGING COLORS OF THE THEME!
+		var this_class = $('#cas-'+class_index+' .bar');		//Find current class row
+		var class_text = $('#cas-'+class_index+' .predmet');
+		class_text.css('font-weight', 'bold').css('color', 'black');
+		this_class.addClass('time-marker');						//Remove existant class markings
 		currently_marked = class_index;
+	}
+
+	function correct_marker_time(minutes)
+	{
+		var this_class = $('#cas-'+currently_marked+' .bar');
+		var value = 336 / 45 * minutes;
+		this_class.css('width', value);
 	}
 	
 	g_calculate_time = calculate_time;
@@ -127,6 +136,9 @@ $(document).ready(function ()
 				message = "min. do kraja <b>poslednjeg</b> casa!";
 
 			mark_class(current_index);
+
+			var marker_time = (now.getTime() - current_class.getTime()) / 1000 / 60;
+			correct_marker_time(marker_time);
 		}
 		else if(now.getTime() >= end_of_class.getTime() && next.getTime() >= now.getTime()  && current_index < vremena.length - 1)	//if it's reccess - and it's not the last class
 		{
