@@ -3,6 +3,7 @@
 	<title>
 	Raspored
 	</title>
+	<meta charset="UTF-8" />
 	<link rel="icon" type="image/png" href="<?= $this->config->item('img_path'); ?>/cal.png" />
 	<link rel="stylesheet" type="text/css" href="<?= $this->config->item('css_path'); ?>/fonts.css" />
 	<link rel="stylesheet" type="text/css" href="<?= $this->config->item('css_path'); ?>/raspored.css" />
@@ -132,7 +133,7 @@
 			<option value="1">Prva</option>
 			<option value="2">Druga</option>
 		</select>
-		<input type="checkbox" id="skraceni">Skraceni casovi</input>
+		<input type="checkbox" id="skraceni">Skraćeni časovi</input>
 	</form></br>
 	<a id="izmeniLink" href="#">izmeni raspored</a>
 	</div>
