@@ -152,6 +152,7 @@
 			<option value="2">Druga</option>
 		</select>
 	</form></br>
+	<a href="<?= $this->config->item('edit_controller'); ?>/">nazad na raspored</a>
 	</div>
 	<h2 id="time"><span id="time-till-end"></span><span id="time-till-end-message"></span></h2>
 		<a style="display: none;" title="Real Time Analytics" href="http://getclicky.com/100550047"><img alt="Real Time Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>

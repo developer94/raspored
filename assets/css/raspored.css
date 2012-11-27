@@ -25,6 +25,7 @@
 
 #raspored td
 {
+	position: relative;
 	padding: 0;
 	padding-left: 0.5em;
 	padding-right: 0.5em;
@@ -34,4 +35,13 @@
 #raspored td.mid
 {
 	padding-left: 0;
+}
+
+.time-marker
+{
+	position: absolute;
+	background-color: orange;
+	height: 100%;
+	top: 0;
+	left: 0;
 }
