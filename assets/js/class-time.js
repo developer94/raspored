@@ -59,8 +59,8 @@ $(document).ready(function ()
 	function correct_marker_time(minutes)
 	{
 		var this_class = $('#cas-'+currently_marked+' .bar');
-		var value = 336 / 45 * minutes;
-		this_class.css('width', value);
+		var value = 100 / 45 * minutes;
+		this_class.css('width', value+'%');
 	}
 	
 	g_calculate_time = calculate_time;

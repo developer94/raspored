@@ -41,9 +41,8 @@
 .time-marker
 {
 	position: absolute;
-	width: 36px;
 	background-color: orange;
-	height: 32px;
+	height: 100%;
 	top: 0;
 	left: 0;
 }
