@@ -132,7 +132,13 @@ class Raspored extends CI_Controller
 		$data['smena']= $_smena;
 		$data['grupa']= $_grupa;
 		$data['odeljenje'] = $_odeljenje;
-		$data['overview']= $this->raspored_model->get_overview($data['smena'], $data['grupa'], $data['odeljenje']);
+		$data['overview']= array();
+		
+		$data['overview']['ponedeljak'] = $this->raspored_model->get_raspored($_odeljenje, 'Ponedeljak', $_smena, $_grupa);
+		$data['overview']['utorak'] = $this->raspored_model->get_raspored($_odeljenje, 'Utorak', $_smena, $_grupa);
+		$data['overview']['sreda'] = $this->raspored_model->get_raspored($_odeljenje, 'Sreda', $_smena, $_grupa);
+		$data['overview']['cetvrtak'] = $this->raspored_model->get_raspored($_odeljenje, 'Cetvrtak', $_smena, $_grupa);
+		$data['overview']['petak'] = $this->raspored_model->get_raspored($_odeljenje, 'Petak', $_smena, $_grupa);
 		$this->load->view('overview_view', $data);
 	}
 }

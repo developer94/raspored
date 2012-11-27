@@ -52,12 +52,15 @@
 			background: orange;
 			color: black;
 			width: 20px;
+			border-right: 2.5px solid royalblue;
 		}
 		
 		.cfblue-highlight
 		{
 			background: CornflowerBlue;
-			min-width: 20em;
+			min-width: 10em;
+			border-left: 2.5px solid royalblue;
+			border-right: 2.5px solid royalblue;
 		}
 		
 		.classroom
@@ -81,31 +84,59 @@
 </head>
 <body>
 	<center>
-		<?php $current = 0; ?>																				<!-- adds a class counter -->
-		<?php foreach($overview as $raspored): ?>
-			<div id="wrapper">
-				<table id="raspored" cellpadding="0px">
-		<?php foreach($raspored->result() as $predmet): ?>
+		<?php
+			  $dani = array();
+			  $dani[0] = $overview['ponedeljak']->result();
+			  $dani[1] = $overview['utorak']->result();
+			  $dani[2] = $overview['sreda']->result();
+			  $dani[3] = $overview['cetvrtak']->result();
+			  $dani[4] = $overview['petak']->result();?>	<!-- adds a class counter -->
+			  
+		<div id="wrapper">
+		<table id="raspored" cellpadding="0px">
+			<thead>
+				<th></th>
+				<th>Ponedeljak</th>
+				<th>Utorak</th>
+				<th>Sreda</th>
+				<th>Cetvrtak</th>
+				<th>Petak</th>
+			</thead>
+		<?php for($cas = 0; $cas < 14; $cas++): ?>
+			<?php
+				if($cas < 7)
+				{
+					$pravi_cas = $cas+1;
+					$mix = "pre";
+				}
+				else
+				{
+					$pravi_cas = $cas - 6;
+					$mix = "posle";
+				}
+			?>
 			<tr>
-				<td class="orange-highlight" valign="middle"><b><?php echo $predmet->cas; ?></b></td>
-				<td class="cfblue-highlight" id="cas-<?= $current; ?>"> 									<!-- adds class number as the ID -->
-					<span><?php echo $predmet->predmet; ?></span>
-					<?php if(!is_null($predmet->ucionica)): ?>
-						<span class="classroom">uc. <?php echo $predmet->ucionica; ?></span>
-						<?php endif; ?>
-					</td>
-					<td><?php echo $predmet->vreme; ?></td>
-				</tr>
-				<script type="text/javascript">
-					remena[current] = "<?= $predmet->vreme; ?>";
-					casovi[current] = <?= $predmet->cas; ?>;
-					current++;
-				</script>
-			<?php $current++; ?>
-		<?php endforeach; ?>
-				</table>
-			</div>
-		<?php endforeach; ?>
+				<td class="orange-highlight" valign="middle"><b><?php echo $pravi_cas; ?></b></td>
+				<?php for($dan = 0; $dan < 5; $dan++): ?>
+				<td class="cfblue-highlight"> 									<!-- adds class number as the ID -->
+					<span>
+						<?php
+						foreach($dani[$dan] as $row_info)
+						{
+							if($row_info->cas == $pravi_cas && $row_info->mix == $mix)
+							{
+								echo $row_info->predmet;
+								break;
+							}
+						}
+						?>
+					</span>
+				</td>
+				<?php endfor; ?>
+			</tr>
+		<?php endfor; ?>
+		</table>
+		</div>
 	</tbody>
 	<div id="choices">
 	<form action="javascript:void%200">
