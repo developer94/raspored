@@ -93,7 +93,6 @@ class Raspored extends CI_Controller
 			$odeljenje 	= $this->input->post('odeljenje');
 			$mix 		= $this->input->post('mix');
 			
-			
 			$this->load->model('raspored_model');
 			
 			$this->raspored_model->add_class($odeljenje, $dan, $grupa, $smena, $mix, $cas, $predmet);
@@ -109,7 +108,7 @@ class Raspored extends CI_Controller
 	public function update_cas($_odeljenje, $_dan, $_smena, $_mix, $_cas, $_mix, $_ucionica, $cas_old)
 	{
 		$this->load->model('raspored_model');
-		$this->rasproed_model->update_cas($_odeljenje, $_dan, $_smena, $_mix, $_cas, $_mix, $_ucionica, $cas_old);
+		$this->raspored_model->update_cas($_odeljenje, $_dan, $_smena, $_mix, $_cas, $_mix, $_ucionica, $cas_old);
 	}
 	
 	public function update_predmet($_odeljenje, $_dan, $_smena, $_cas, $_mix, $_ucionica, $predmet_old)
@@ -128,6 +127,24 @@ class Raspored extends CI_Controller
 	{
 		$this->load->model('raspored_model');
 		$this->raspored_model->update_mix($_odeljenje, $_dan, $_smena, $_cas, $_mix, $_ucionica, $_mix_old);
+	}
+	
+	public function overview($_grupa = '1', $_odeljenje = '409', $_smena = 'Prepodne')
+	{
+		$data = array();
+		$this->load->database();
+		$this->load->model('raspored_model');
+		$data['smena']= $_smena;
+		$data['grupa']= $_grupa;
+		$data['odeljenje'] = $_odeljenje;
+		$data['overview']= array();
+		
+		$data['overview']['ponedeljak'] = $this->raspored_model->get_raspored($_odeljenje, 'Ponedeljak', $_smena, $_grupa, "");
+		$data['overview']['utorak'] = $this->raspored_model->get_raspored($_odeljenje, 'Utorak', $_smena, $_grupa, "");
+		$data['overview']['sreda'] = $this->raspored_model->get_raspored($_odeljenje, 'Sreda', $_smena, $_grupa, "");
+		$data['overview']['cetvrtak'] = $this->raspored_model->get_raspored($_odeljenje, 'Cetvrtak', $_smena, $_grupa, "");
+		$data['overview']['petak'] = $this->raspored_model->get_raspored($_odeljenje, 'Petak', $_smena, $_grupa, "");
+		$this->load->view('overview_view', $data);
 	}
 }
 ?>

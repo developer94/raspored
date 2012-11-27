@@ -26,10 +26,8 @@
 		var g_calculate_time;
 
 		var edit_path = "<?= $this->config->item('edit_controller'); ?>";
-		var dan = "<?= $dan?>";
 		var smena = "<?= $smena?>";
 		var grupa = "<?= $grupa?>";
-		var skraceni = "<?= $skraceni?>";
 	</script>
 	<style type="text/css">
 		body 
@@ -55,12 +53,15 @@
 			background: orange;
 			color: black;
 			width: 20px;
+			border-right: 2.5px solid royalblue;
 		}
 		
 		.cfblue-highlight
 		{
 			background: CornflowerBlue;
-			min-width: 20em;
+			min-width: 10em;
+			border-left: 2.5px solid royalblue;
+			border-right: 2.5px solid royalblue;
 		}
 		
 		.classroom
@@ -83,46 +84,63 @@
 	</style>
 </head>
 <body>
-	<center><div id="wrapper">
+	<center>
+		<?php
+			  $dani = array();
+			  $dani[0] = $overview['ponedeljak']->result();
+			  $dani[1] = $overview['utorak']->result();
+			  $dani[2] = $overview['sreda']->result();
+			  $dani[3] = $overview['cetvrtak']->result();
+			  $dani[4] = $overview['petak']->result();?>	<!-- adds a class counter -->
+			  
+		<div id="wrapper">
 		<table id="raspored" cellpadding="0px">
 			<thead>
-				<tr>
-					<th colspan="3"><h1><?php echo $dan. " " .$smena; ?></h1></th>
-				</tr>
+				<th></th>
+				<th>Ponedeljak</th>
+				<th>Utorak</th>
+				<th>Sreda</th>
+				<th>Cetvrtak</th>
+				<th>Petak</th>
 			</thead>
-			<tbody>
-				<?php $current = 0; ?>																				<!-- adds a class counter -->
-				<?php foreach($raspored->result() as $predmet): ?>
-					<tr>
-						<td class="orange-highlight" valign="middle"><b><?php echo $predmet->cas; ?></b></td>
-						<td class="cfblue-highlight" id="cas-<?= $current; ?>"> 									<!-- adds class number as the ID -->
-							<span><?php echo $predmet->predmet; ?></span>
-							<?php if(!is_null($predmet->ucionica)): ?>
-							<span class="classroom">uc. <?php echo $predmet->ucionica; ?></span>
-							<?php endif; ?>
-						</td>
-						<td><?php echo $predmet->vreme; ?></td>
-					</tr>
-					<script type="text/javascript">
-						vremena[current] = "<?= $predmet->vreme; ?>";
-						casovi[current] = <?= $predmet->cas; ?>;
-						current++;
-					</script>
-					<?php $current++; ?>
-				<?php endforeach; ?>
-			</tbody>
+		<?php for($cas = 0; $cas < 14; $cas++): ?>
+			<?php
+				if($cas < 7)
+				{
+					$pravi_cas = $cas+1;
+					$mix = "pre";
+				}
+				else
+				{
+					$pravi_cas = $cas - 6;
+					$mix = "posle";
+				}
+			?>
+			<tr>
+				<td class="orange-highlight" valign="middle"><b><?php echo $pravi_cas; ?></b></td>
+				<?php for($dan = 0; $dan < 5; $dan++): ?>
+				<td class="cfblue-highlight"> 									<!-- adds class number as the ID -->
+					<span>
+						<?php
+						foreach($dani[$dan] as $row_info)
+						{
+							if($row_info->cas == $pravi_cas && $row_info->mix == $mix)
+							{
+								echo $row_info->predmet;
+								break;
+							}
+						}
+						?>
+					</span>
+				</td>
+				<?php endfor; ?>
+			</tr>
+		<?php endfor; ?>
 		</table>
-	</div>
+		</div>
+	</tbody>
 	<div id="choices">
 	<form action="javascript:void%200">
-		Dan: 
-		<select id="selDan">
-			<option value="Ponedeljak">Ponedeljak</option>
-			<option value="Utorak">Utorak</option>
-			<option value="Sreda">Sreda</option>
-			<option value="Cetvrtak">Cetvrtak</option>
-			<option value="Petak">Petak</option>
-		</select>
 		Smena: 
 		<select id="selSmena">
 			<option value="Prepodne">Prepodne</option>
@@ -133,10 +151,7 @@
 			<option value="1">Prva</option>
 			<option value="2">Druga</option>
 		</select>
-		<input type="checkbox" id="skraceni">Skraćeni časovi</input>
 	</form></br>
-	<a id="izmeniLink" href="#">izmeni raspored</a><br>
-	<a id="overview" href="<?= $this->config->item('edit_controller'); ?>/overview/<?=$grupa?>/409/<?=$smena?>">pregled rasporeda</a>
 	</div>
 	<h2 id="time"><span id="time-till-end"></span><span id="time-till-end-message"></span></h2>
 		<a style="display: none;" title="Real Time Analytics" href="http://getclicky.com/100550047"><img alt="Real Time Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
@@ -144,7 +159,7 @@
 		<script type="text/javascript">try{ clicky.init(100550047); }catch(e){}</script>
 		<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100550047ns.gif" /></p></noscript>
 	</center>
-	<script type="text/javascript" src="<?= $this->config->item('js_path'); ?>/views/raspored.js"></script>
+	<script type="text/javascript" src="<?= $this->config->item('js_path'); ?>/views/overview.js"></script>
 	<script type="text/javascript" src="<?= $this->config->item('js_path'); ?>/class-time.js"></script>
 </body>
 </html>
