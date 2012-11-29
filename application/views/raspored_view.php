@@ -39,6 +39,7 @@
 		
 		#wrapper
 		{
+			position: relative;
 			display: inline-block;
 			background: royalBlue;
 			padding: 10px 10px 10px 10px;
