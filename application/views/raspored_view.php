@@ -26,6 +26,7 @@
 		var g_calculate_time;
 
 		var edit_path = "<?= $this->config->item('edit_controller'); ?>";
+		var odeljenje = "<?= $odeljenje?>";
 		var dan = "<?= $dan?>";
 		var smena = "<?= $smena?>";
 		var grupa = "<?= $grupa?>";
@@ -143,7 +144,7 @@
 		<input type="checkbox" id="skraceni">Skraćeni časovi</input>
 	</form></br>
 	<a id="izmeniLink" href="#">izmeni raspored</a><br>
-	<a id="overview" href="<?= $this->config->item('edit_controller'); ?>/overview/<?=$grupa?>/409/<?=$smena?>">pregled rasporeda</a>
+	<a id="overview" href="#">pregled rasporeda</a>
 	</div>
 	<h2 id="time"><span id="time-till-end"></span><span id="time-till-end-message"></span></h2>
 		<a style="display: none;" title="Real Time Analytics" href="http://getclicky.com/100550047"><img alt="Real Time Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>

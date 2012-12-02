@@ -28,6 +28,7 @@
 		var edit_path = "<?= $this->config->item('edit_controller'); ?>";
 		var smena = "<?= $smena?>";
 		var grupa = "<?= $grupa?>";
+		var odeljenje = "<?= $odeljenje?>";
 	</script>
 	<style type="text/css">
 		body 
@@ -152,7 +153,7 @@
 			<option value="2">Druga</option>
 		</select>
 	</form></br>
-	<a href="<?= $this->config->item('edit_controller'); ?>/">nazad na raspored</a>
+	<a id="rasporedLink" href="#">nazad na raspored</a>
 	</div>
 	<h2 id="time"><span id="time-till-end"></span><span id="time-till-end-message"></span></h2>
 		<a style="display: none;" title="Real Time Analytics" href="http://getclicky.com/100550047"><img alt="Real Time Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
@@ -161,6 +162,5 @@
 		<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100550047ns.gif" /></p></noscript>
 	</center>
 	<script type="text/javascript" src="<?= $this->config->item('js_path'); ?>/views/overview.js"></script>
-	<script type="text/javascript" src="<?= $this->config->item('js_path'); ?>/class-time.js"></script>
 </body>
 </html>

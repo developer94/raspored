@@ -13,7 +13,7 @@ $(document).ready(function ()
 			minuti[index] = minuti[index].slice(1);
 		}
 			
-		sati[index] = value.substr(0,2);					
+		sati[index] = value.substr(0,2);
 		if(sati[index][0] == "0")
 			sati[index] = sati[index].slice(1);
 	}

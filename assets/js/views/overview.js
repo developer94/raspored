@@ -8,12 +8,12 @@ $(document).ready(function ()
 	$("#selSmena").change(update);			//----
 	$("#selGrupa").change(update);			//----
 	
-	$("#izmeniLink").attr("href", edit_path + '/izmeni/' + grupa + '/409/' + dan + '/' + smena);
+	$("#rasporedLink").attr("href", edit_path + '/index/' + grupa + '/' + odeljenje);
 
 	function update()
 	{
 		var smena = $("#selSmena").val();
 		var grupa = $("#selGrupa").val();
-		window.location.href = edit_path + '/overview/' + grupa + '/409/' + smena;
+		window.location.href = edit_path + '/overview/' + grupa + '/' + odeljenje + '/' + smena;
 	}
 });

@@ -11,7 +11,8 @@ $(document).ready(function ()
 	$("#selGrupa").change(update);			//----
 	$("#skraceni").change(update);
 	
-	$("#izmeniLink").attr("href", edit_path + '/izmeni/' + grupa + '/409/' + dan + '/' + smena);
+	$("#izmeniLink").attr("href", edit_path + '/izmeni/' + grupa + '/' + odeljenje + '/' + dan + '/' + smena);
+	$("#overview").attr("href", edit_path + '/overview/' + grupa + '/' + odeljenje + '/' + smena);
 
 	function update()
 	{
@@ -19,6 +20,6 @@ $(document).ready(function ()
 		var smena = $("#selSmena").val();
 		var grupa = $("#selGrupa").val();
 		var skraceni = $("#skraceni").attr('checked')?"Skraceno":"";
-		window.location.href = edit_path + '/index/' + grupa + '/409/' + dan + '/' + smena + '/' + skraceni;
+		window.location.href = edit_path + '/index/' + grupa + '/'+ odeljenje + '/' + dan + '/' + smena + '/' + skraceni;
 	}
 });

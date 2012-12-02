@@ -23,8 +23,10 @@ $(document).ready(function ()
 	var dan = $("#selDan").val();
 	var smena = $("#selSmena").val();
 	var grupa = $("#selGrupa").val();
+
+	var odeljenje = "<?= $odeljenje?>";
 	
-	$("#rasporedLink").attr("href", '/raspored/index/' + grupa + '/409/' + dan + '/' + smena);
+	$("#rasporedLink").attr("href", '/raspored/index/' + grupa + '/' + odeljenje + '/' + dan + '/' + smena);
 	
 	console.log(originalstate);
 	
@@ -34,7 +36,7 @@ $(document).ready(function ()
 		var smena = $("#selSmena").val();
 		var grupa = $("#selGrupa").val();
 		
-		window.location.href = '/raspored/izmeni/'+ grupa + '/409/' + dan + '/' + smena;
+		window.location.href = '/raspored/izmeni/'+ grupa + '/' + odeljenje + '/' + dan + '/' + smena;
 	}
 	
 	g_test = function()						//global test unload func
