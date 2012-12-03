@@ -5,6 +5,7 @@
 	</title>
 	<meta charset="UTF-8" />
 	<link rel="icon" type="image/png" href="<?= $this->config->item('img_path'); ?>/cal.png" />
+	<link rel="stylesheet" type="text/css" href="<?= $this->config->item('css_path'); ?>/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="<?= $this->config->item('css_path'); ?>/fonts.css" />
 	<link rel="stylesheet" type="text/css" href="<?= $this->config->item('css_path'); ?>/raspored.css" />
 	<link rel="stylesheet" type="text/css" href="<?= $this->config->item('css_path'); ?>/default.css" />
