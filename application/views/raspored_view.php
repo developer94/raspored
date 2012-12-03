@@ -86,32 +86,43 @@
 		.predmet
 		{
 			position: relative;
-			left: 8px;
-			top: 5px;
 			z-index: 1;
 		}
 
-		.mobile-fix
-		{
-			position:relative;
-			top:-5px;
-			left:-8px;
-		}
-	</style>
-	<style type="text/css" media="only screen and (max-device-width: 480px)" />
-		.predmet
+		.classroom
 		{
 			position: relative;
-			left: 8px;
-			top: 7px;
 		}
 
 		.mobile-fix
 		{
-			position:relative;
-			top:-7px;
-			left:-8px;
+			position: relative;
+			top: -5px;
+			left: -8px;
 		}
+
+		.mobile-fix .predmet,
+		.mobile-fix .classroom
+		{
+			left: 8px;
+			top: 5px;
+		}
+	</style>
+	<style type="text/css" media="only screen and (max-device-width: 480px)" >
+		.mobile-fix
+		{
+			position: relative;
+			top: -7px;
+			left: -8px;
+		}
+
+		.mobile-fix .predmet,
+		.mobile-fix .classroom
+		{
+			left: 8px;
+			top: 7px;
+		}
+	}
 	</style>
 </head>
 <body>
