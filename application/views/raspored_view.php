@@ -86,6 +86,8 @@
 		.predmet
 		{
 			position: relative;
+			left: 8px;
+			top: 5px;
 			z-index: 1;
 		}
 	</style>
@@ -104,10 +106,12 @@
 					<tr>
 						<td class="orange-highlight" valign="middle"><b><?php echo $predmet->cas; ?></b></td>
 						<td class="cfblue-highlight" id="cas-<?= $current; ?>"> 		<!-- adds class number as the ID -->
-							<span class="bar"></span><span class="predmet"><?php echo $predmet->predmet; ?></span>
-							<?php if(!is_null($predmet->ucionica)): ?>
-							<span class="classroom">uc. <?php echo $predmet->ucionica; ?></span>
-							<?php endif; ?>
+							<div style="position:relative;top:-5px;left:-8px">		<!-- privremeni hack za pozicioniranje bar-a na firefox-u i mobilnim telefonima -->
+								<span class="bar"></span><span class="predmet"><?php echo $predmet->predmet; ?></span>
+								<?php if(!is_null($predmet->ucionica)): ?>
+								<span class="classroom">uc. <?php echo $predmet->ucionica; ?></span>
+								<?php endif; ?>
+							</div>
 						</td>
 						<td><?php echo $predmet->vreme; ?></td>
 					</tr>
