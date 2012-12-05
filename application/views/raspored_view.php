@@ -93,32 +93,30 @@
 		.classroom
 		{
 			position: relative;
+			top: 5px;
+			left: -5px;		/* treba promeniti, broj ucionice moze biti i duzi! */
 		}
 
 		.mobile-fix
 		{
 			position: relative;
-			top: -5px;
-			left: -8px;
+			height: 100%;
+			width: 100%;
 		}
 
-		.mobile-fix .predmet,
-		.mobile-fix .classroom
+		.mobile-fix .predmet
 		{
 			left: 8px;
 			top: 5px;
 		}
+
+		.nopadding
+		{
+			padding: 0 !important;
+		}
 	</style>
 	<style type="text/css" media="only screen and (max-device-width: 480px)" >
-		.mobile-fix
-		{
-			position: relative;
-			top: -7px;
-			left: -8px;
-		}
-
-		.mobile-fix .predmet,
-		.mobile-fix .classroom
+		.mobile-fix .predmet
 		{
 			left: 8px;
 			top: 7px;
@@ -139,7 +137,7 @@
 				<?php foreach($raspored->result() as $predmet): ?>
 					<tr>
 						<td class="orange-highlight" valign="middle"><b><?php echo $predmet->cas; ?></b></td>
-						<td class="cfblue-highlight" id="cas-<?= $current; ?>"> 		<!-- adds class number as the ID -->
+						<td class="cfblue-highlight nopadding" id="cas-<?= $current; ?>"> 		<!-- adds class number as the ID -->
 							<div class="mobile-fix">		<!-- privremeni hack za pozicioniranje bar-a na firefox-u i mobilnim telefonima -->
 								<span class="bar"></span><span class="predmet"><?php echo $predmet->predmet; ?></span>
 								<?php if(!is_null($predmet->ucionica)): ?>
