@@ -69,8 +69,8 @@ $(document).ready(function ()
 	function hasAlreadyPassed(hours, minutes)					//checks if the time has passed compared to the current moment
 	{
 		var time = new Date();
-		//time.setHours(10);									//DEBUG: Test time
-		//time.setMinutes(52);									//DEBUG: Test time
+		//time.setHours(16);									//DEBUG: Test time
+		//time.setMinutes(35);									//DEBUG: Test time
 		
 		var last_time = new Date();
 		last_time.setHours(hours);
@@ -87,8 +87,8 @@ $(document).ready(function ()
 	var timeTillEnd = function ()
 	{
 		var now = new Date();
-		//now.setHours(10);										//DEBUG: Test time
-		//now.setMinutes(52);									//DEBUG: Test time
+		//now.setHours(16);										//DEBUG: Test time
+		//now.setMinutes(35);									//DEBUG: Test time
 		
 		var current_class = new Date();
 		var end_of_class = new Date();
@@ -152,6 +152,7 @@ $(document).ready(function ()
 				unmark_class(current_index);
 				mark_class(current_index+1);
 			}
+			$("#cas-"+current_index).addClass("border-odmor")
 		}
 		else if(now.getTime() > end_of_class.getTime() && current_index == vremena.length - 1)
 		{
