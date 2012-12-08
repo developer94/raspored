@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html ng-app>
 <head>
 	<title>
 	Raspored
@@ -7,8 +8,9 @@
 	<link rel="stylesheet" type="text/css" href="<?= $this->config->item('css_path'); ?>/fonts.css" />
 	<link rel="stylesheet" type="text/css" href="<?= $this->config->item('css_path'); ?>/raspored.css" />
 	<link rel="stylesheet" type="text/css" href="<?= $this->config->item('css_path'); ?>/default.css" />
-	<script type="text/javascript" src="<?= $this->config->item('js_path'); ?>/lib/jquery-1.8.2.min.js"></script>
-	<script type="text/javascript">
+	<script src="<?= $this->config->item('js_path'); ?>/lib/jquery-1.8.2.min.js"></script>
+	<script src="<?= $this->config->item('js_path'); ?>/lib/angular.min.js"></script>
+	<script>
 		var vremena = [];
 		var minuti = [];
 		var sati = [];
@@ -29,6 +31,8 @@
 		var smena = "<?= $smena?>";
 		var grupa = "<?= $grupa?>";
 	</script>
+	<script type="text/javascript" src="<?= $this->config->item('js_path'); ?>/views/raspored.js"></script>
+	<script type="text/javascript" src="<?= $this->config->item('js_path'); ?>/class-time.js"></script>
 	<style type="text/css">
 		body 
 		{
@@ -140,7 +144,5 @@
 		<script type="text/javascript">try{ clicky.init(100550047); }catch(e){}</script>
 		<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100550047ns.gif" /></p></noscript>
 	</center>
-	<script type="text/javascript" src="<?= $this->config->item('js_path'); ?>/views/raspored.js"></script>
-	<script type="text/javascript" src="<?= $this->config->item('js_path'); ?>/class-time.js"></script>
 </body>
 </html>

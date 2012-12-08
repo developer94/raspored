@@ -76,6 +76,45 @@ class Raspored extends CI_Controller
 			$this->load->view('authfailed_view');
 		}
 	}
+
+	public function offline($grupa = 1, $odeljenje = 409, $dan = NULL, $smena = NULL)
+	{
+		$data = array();
+		
+		$this->load->database();
+		$this->load->model("raspored_model");
+		
+		if($dan == NULL)
+			$data['dan'] = get_dan();
+		else
+			$data['dan'] = $dan;
+		
+		if($smena == NULL)
+			$data['smena'] = get_smena();
+		else
+			$data['smena'] = $smena;
+
+		$data['odeljenje'] = $odeljenje;
+		$data['grupa'] = $grupa;
+
+		$raspored = $this->raspored_model->get_raspored($data['odeljenje'], $data['dan'], $data['smena'], $data['grupa']);
+		/*$raspored_result = array();
+
+		foreach($raspored->result() as $row)
+		{
+			$cas = array(
+				"cas" => $row->cas,
+				"predmet" => $row->predmet,
+				"ucionica" => $row->ucionica,
+				"vreme" => $row->vreme
+			);
+
+			array_push($raspored_result, $cas);
+		}*/
+
+		$data['raspored'] = json_encode($raspored->result());
+		$this->load->view('offline_view', $data);
+	}
 	
 	public function add()
 	{
