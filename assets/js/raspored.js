@@ -18,3 +18,5 @@ $(document).ready(function ()
 		window.location.href = edit_path + '/index/' + grupa + '/409/' + dan + '/' + smena;
 	}
 });
+
+function
